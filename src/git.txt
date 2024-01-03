@@ -1,0 +1,24 @@
+인텔리제이 git 연동
+	[ 인텔리제이 github 설치 ]
+		1. 메뉴->파일->설정->플러그인(마켓플레이스)
+		2. 'github' 설치
+
+	[ 인텔리제이 github 로그인 ]
+		1. 메뉴 ->파일->설정->버전관리->GITHUB
+		2. 계정 추가 -> git웹페이지 창에서(인증)
+
+	[ 최초로 github 프로젝트 공유  ]
+		1. 메뉴 -> VCS -> github 프로젝트 공유
+			1. 저장소 이름 : (프로젝트명)	[공개]
+			2. 원격 : origin
+			3. 설명 : read.me내용
+				계정추가-> 로그인
+			[ 공유 ]
+
+		( git 작성자 아이디와 이메일이 없을경우 오류 발생 )
+			(1안). 터미널 -> git Bash
+			git config user.name [github 닉네임]
+			git config user.email [github 이메일]
+			(2안). 메뉴-> VCS -> 푸시
+
+	[ 앞으로 commit(완료)/push(업로드) ]
