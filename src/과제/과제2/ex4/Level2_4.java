@@ -17,7 +17,7 @@ public class Level2_4 {
 		String player = scanner.next();
 
 		/* 문제풀이 위치 플레이어가 가위이면 플레이어는 0*/
-
+ㅇㅇ
 		int playerNum;
 
 		System.out.println(com);
