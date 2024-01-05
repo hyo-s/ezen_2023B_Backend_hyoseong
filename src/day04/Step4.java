@@ -13,4 +13,5 @@ public class Step4 {    // CLASS START
             출금 : 빼기 작업
             잔고 : 확인 작업
             종료 : 프로그램을 끝내는 작업
+        [ 구현순서 ]
  */
