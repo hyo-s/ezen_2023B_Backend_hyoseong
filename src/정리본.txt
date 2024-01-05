@@ -232,7 +232,8 @@ p.34
             "문자열" + "문자열"
 =============================================================================
 
-
+스캐너 import java.util.Scanner;
+    * Scanner scanner = new Scanner(System.in); *
 
 
 
