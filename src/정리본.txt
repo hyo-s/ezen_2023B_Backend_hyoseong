@@ -235,10 +235,56 @@ p.34
 스캐너 import java.util.Scanner;
     * Scanner scanner = new Scanner(System.in); *
 
+=============================================================================
+배열 선언 방법 1
+    타입[] 배열명 = { 값0, 값1, 값2 }
 
+    배열 호출
+        배열명[인덱스]
+        int[] array = { 1, 2, 3}
+        array[1]    // 2
 
+배열 선언 방법 2
+    타입[] 배열명 = new 타입[길이];
+    int[] array = new int[3];
 
+    배열 호출
+        for(int i=0; i<array.length; i++){
+            System.out.printf("array[%1d] : %2f, ", i, array[i]);
+        }
+        new 연산자 사용시 초기값이 들어감 : 정수:0 실수:0.0 논리:false 클래스:null
 
+배열에 항목/요소 값 넣기/수정
+    배열명[인덱스] = 새로운 값;
+    array[i] = newValue
 
+배열에 항목/요소 값 삭제
+    배열명[인덱스] = 각 타입의 초기값
+    array[i] = 0;
 
+=============================================================================
+
+    오름차순
+        int temp = 0;
+
+        if (a>b){temp=a; a=b; b=temp;}
+        if (a>c){temp=a; a=c; c=temp;}
+        if (b>c){temp=b; b=c; c=temp;}
+
+        System.out.printf("오름차순 %d %d %d",a,b,c);*/
+
+    무한루프
+        boolean run = true
+        while(run)
+        while(true)
+
+=============================================================================
+
+타입 변환
+    STRING -> INT   // 문자에서 정수로
+        '123' -> 123
+            int 변수명 = Integer.parseInt(문자)
+            int number = Integer.parseInt(123)
+
+=============================================================================
 
