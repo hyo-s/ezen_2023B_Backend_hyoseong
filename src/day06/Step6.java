@@ -8,36 +8,47 @@ public class Step6 {    // CLASS START
         Scanner scanner = new Scanner(System.in);
 
         String 전화번호부 = "";
-
-        System.out.println("========== 전화번호부 ===========");
-        System.out.println("| 순번 |  이름  |    전화번호    |");
-        System.out.println("===============================");
         String[] array = null;
 
         while(true) {   // WHILE START
+            System.out.println();
+            System.out.println("========== 전화번호부 ===========");
+            System.out.println("| 순번 |  이름  |    전화번호    |");
+            if(array!=null) {   //  IF START
+                for (int i = 0; i < array.length; i++) {        // FOR START
+                    if (array[i] != null) { // IF START
+                        String cutName = array[i].substring(0, 3);
+                        String cutphoneNum = array[i].substring(3, 14);
+                        System.out.printf("%4s %6s %15s", i + 1, cutName, cutphoneNum);
+                        System.out.println();
+                    }   // IF END
+                }   // FOR END
+            }   // IF END
+            System.out.println();
+            System.out.println("===============================");
+// ============================================================================= //
             System.out.println("| 1.전화번호등록 | 2.전화번호 삭제 |");
             System.out.print("항목을 번호로 입력하세요 : ");
             String ch = scanner.nextLine();
-            System.out.println("| 순번 |  이름  |    전화번호    |");
+// ============================================================================= //
             if (ch.equals("1")) {   // IF START
-// ==================================== 등록 ==================================== //
                 System.out.print("이름을 입력하세요 : ");
                 String name = scanner.nextLine();
                 System.out.print("전화번호 입력하세요 : ");
                 String phoneNum = scanner.nextLine();
-                전화번호부 += "\t"+name+"\t"+"\t"+ phoneNum + ",";   System.out.println("전화번호부 = " + 전화번호부);
-// ============================================================================= //
-// ==================================== 처리 ==================================== //
+                전화번호부 += name+phoneNum+",";
                 array=전화번호부.split(",");
-
-                for(int i=0; i<array.length; i++){
-                    System.out.println(array[i]);
-                }
-
-
-            }else if(ch.equals("2")){               // IF END
-
-            }
+// ============================================================================= //
+            }else if(ch.equals("2")){  // ELSE IF START     // IF END
+                System.out.print("삭제하실 순번을 입력해주세요. : ");
+                int no = scanner.nextInt();
+                for(int i=0; i<array.length; i++){  // FOR START
+                    if(no-1==i){    // IF START
+                        array[i] = null;
+                    }   // IF END
+                }   // FOR END
+            }   // ELSE IF END
+// ============================================================================= //
         }   // WHILE END
     }   // MAIN END
 }   // CLASS END
