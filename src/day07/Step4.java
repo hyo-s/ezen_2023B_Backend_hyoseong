@@ -23,6 +23,7 @@ public class Step4 {    // CLASS START
                 System.out.print("전화번호 : ");
                 phone.phoneNumber += scanner.next();
                 System.out.println(phone.name);
+
             }   // IF END
         }   // WHILE END
     }   // MAIN END
