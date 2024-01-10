@@ -11,7 +11,19 @@ public class Level3_4 {
 		Scanner scanner = new Scanner(System.in);
 	
 		/* 문제풀이 위치 */
-	
+		int data = 0;
+		while(true){
+			System.out.println();
+			System.out.print("input : ");
+			int num = scanner.nextInt();
+			data += num;
+			for(int i=0; i<data; i++){
+				System.out.print("■");
+			}
+			if(data<0){
+				break;
+			}
+		}
 		/* ----------- */
 
 	}

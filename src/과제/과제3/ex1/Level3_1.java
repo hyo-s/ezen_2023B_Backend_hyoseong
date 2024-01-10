@@ -24,7 +24,9 @@ public class Level3_1 {
 		System.out.println("--------------- for 사용해서 출력 10회 --------------------");
 		
 		/* 문제풀이 위치 */
-		
+		for(int i=0; i<=10; i++){
+			System.out.println("안녕하세요"+i);
+		}
 		
 		
 		/* ----------- */
