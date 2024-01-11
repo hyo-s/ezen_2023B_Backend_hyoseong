@@ -1,5 +1,6 @@
 package 과제.과제4.ex4;
 
+import javax.lang.model.element.NestingKind;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -14,11 +15,48 @@ public class Level4_4 {
 		int x = 0;
 		X_AXIS[ x ] = "★";
 
-		while ( true ) {
+		while ( true ) {	// WHILE START
 			/* 문제풀이 위치 */
+			System.out.print(X_AXIS[0]+" ");
+			System.out.print(X_AXIS[1]+" ");
+			System.out.print(X_AXIS[2]+" ");
+			System.out.print(X_AXIS[3]+" ");
+			System.out.print(X_AXIS[4]+" ");
 
+
+
+			System.out.println();
+			System.out.print("1.전진 2.후진 선택> ");
+			int num = scanner.nextInt();
+
+			if (num==1){	// IF START
+				String temp = "★";
+				for (int i=0; i<X_AXIS.length; i++){// FOR START
+					if(X_AXIS[i]!=null){
+						if(i==X_AXIS.length-1)break;
+						X_AXIS[i]=null;
+						for(int j=i+1; i<X_AXIS.length; i++){
+							if(j==X_AXIS.length)break;
+							X_AXIS[j]=temp;
+						}
+					}
+				}	// FOR END
+			}	// IF END
+			if (num == 2) {
+				String temp = "★";
+				for(int i=X_AXIS.length-1; i>-1; i--){
+					if(X_AXIS[i]!=null){
+						if(i<0)break;
+						X_AXIS[i]=null;
+						for(int j=X_AXIS.length-2; j>-1; j--){
+							X_AXIS[j]=temp;
+
+						}
+					}
+				}
+			}
 			/* ----------- */
-		}
+		}	// WHILE END
 	}
 }
 /* 
@@ -36,4 +74,26 @@ public class Level4_4 {
 			String[] X_AXIS = new String[5];
 			int x = 0;
 			X_AXIS[ x ] = "★";
+
+			if (num==1){	// IF START
+				String temp = "★";
+				for (int i=0; i<X_AXIS.length; i++){// FOR START
+					if(X_AXIS[i]!=null){
+						if(i==X_AXIS.length-1)break;
+						X_AXIS[i]=null;
+						for(int j=i+1; i<X_AXIS.length; i++){
+							if(j==X_AXIS.length)break;
+							X_AXIS[j]=temp;
+						}
+					}
+				}	// FOR END
+			}	// IF END
+			if(num==2){
+				String temp = "★";
+				for (int i=X_AXIS.length; i>0; i--){
+					if (X_AXIS[i-1]!=null){
+						X_AXIS[i]=null;
+					}
+				}
+			}
 */

@@ -13,7 +13,17 @@ public class Level4_3 {
 		int[] point = { 97 , 73 ,52 , 76 , 51 };
 
 		/* 문제풀이 위치 */
-
+		int temp ;
+		for(int i=0; i<point.length; i++){
+			for(int j=i+1; j<point.length; j++){
+				if(point[i]>point[j]){
+					temp = point[i];
+					point[i] = point[j];
+					point[j] = temp;
+				}
+			}
+			System.out.print(point[i]+" ");
+		}
 		/* ----------- */
 	}
 }

@@ -13,6 +13,22 @@ public class Level4_1 {
 		int[] point = { 97 , 73 ,52 , 76 , 51 };
 
 		/* 문제풀이 위치 */
+		int temp ;
+		System.out.print("앞쪽부터 ");
+		for(int i=0; i<point.length; i++){
+			System.out.print(point[i]+" ");
+		}
+		System.out.println();
+		System.out.print("뒤쪽부터 ");
+		for(int i=0; i<point.length; i++){
+			for(int j=i+1; j<point.length; j++){
+				temp = point[i];
+				point[i] = point[j];
+				point[j] = temp;
+			}
+			System.out.print(point[i]+" ");
+		}
+
 
 		/* ----------- */
 
