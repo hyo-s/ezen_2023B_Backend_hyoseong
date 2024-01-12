@@ -17,44 +17,32 @@ public class Level4_4 {
 
 		while ( true ) {	// WHILE START
 			/* 문제풀이 위치 */
-			System.out.print(X_AXIS[0]+" ");
-			System.out.print(X_AXIS[1]+" ");
-			System.out.print(X_AXIS[2]+" ");
-			System.out.print(X_AXIS[3]+" ");
-			System.out.print(X_AXIS[4]+" ");
-
-
+			for (int i=0; i<X_AXIS.length; i++){	// FOR START
+				System.out.print(X_AXIS[i]+" ");
+			}	// FOR END
 
 			System.out.println();
 			System.out.print("1.전진 2.후진 선택> ");
-			int num = scanner.nextInt();
+			int ch = scanner.nextInt();
 
-			if (num==1){	// IF START
-				String temp = "★";
-				for (int i=0; i<X_AXIS.length; i++){// FOR START
-					if(X_AXIS[i]!=null){
-						if(i==X_AXIS.length-1)break;
-						X_AXIS[i]=null;
-						for(int j=i+1; i<X_AXIS.length; i++){
-							if(j==X_AXIS.length)break;
-							X_AXIS[j]=temp;
-						}
-					}
-				}	// FOR END
+			if(ch==1 && x<4) {    // IF START
+				x++;
+				for (int i = 0; i < X_AXIS.length; i++) {	// FOR START
+					X_AXIS[i] = null;
+					if (i == x) {	// IF START
+						X_AXIS[i] = "★";
+					}	// IF END
+				}    // FOR END
 			}	// IF END
-			if (num == 2) {
-				String temp = "★";
-				for(int i=X_AXIS.length-1; i>-1; i--){
-					if(X_AXIS[i]!=null){
-						if(i<0)break;
-						X_AXIS[i]=null;
-						for(int j=X_AXIS.length-2; j>-1; j--){
-							X_AXIS[j]=temp;
-
-						}
-					}
-				}
-			}
+			if(ch==2 && x>0) {    // IF START
+				x--;
+				for (int i = 0; i < X_AXIS.length; i++) {	// FOR START
+					X_AXIS[i] = null;
+					if (i == x) {	// IF START
+						X_AXIS[i] = "★";
+					}	// IF END
+				}    // FOR END
+			}	// IF END
 			/* ----------- */
 		}	// WHILE END
 	}
@@ -93,6 +81,33 @@ public class Level4_4 {
 				for (int i=X_AXIS.length; i>0; i--){
 					if (X_AXIS[i-1]!=null){
 						X_AXIS[i]=null;
+
+									if (num==1){	// IF START
+				String temp = "★";
+				for (int i=0; i<X_AXIS.length; i++){// FOR START
+					if(X_AXIS[i]!=null){
+						if(i==X_AXIS.length-1)break;
+						X_AXIS[i]=null;
+						for(int j=i+1; i<X_AXIS.length; i++){
+							if(j==X_AXIS.length)break;
+							X_AXIS[j]=temp;
+						}
+					}
+				}	// FOR END
+			}	// IF END
+			if (num == 2) {
+				String temp = "★";
+				for(int i=X_AXIS.length-1; i>-1; i--){
+					if(X_AXIS[i]!=null){
+						if(i<0)break;
+						X_AXIS[i]=null;
+						for(int j=X_AXIS.length-2; j>-1; j--){
+							X_AXIS[j]=temp;
+
+						}
+					}
+				}
+			}
 					}
 				}
 			}

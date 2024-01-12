@@ -13,6 +13,12 @@ public class Level4_3 {
 		int[] point = { 97 , 73 ,52 , 76 , 51 };
 
 		/* 문제풀이 위치 */
+		System.out.print("정렬전 : ");
+		for (int i=0; i<point.length; i++){
+			System.out.print(point[i]+" ");
+		}
+		System.out.println();
+		System.out.print("정렬후 : ");
 		int temp ;
 		for(int i=0; i<point.length; i++){
 			for(int j=i+1; j<point.length; j++){
