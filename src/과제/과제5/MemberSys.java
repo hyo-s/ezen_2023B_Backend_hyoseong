@@ -7,6 +7,7 @@ public class MemberSys {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		Member[] memberArray = new Member[10];
 		
 		while(true) {
 
@@ -14,13 +15,44 @@ public class MemberSys {
 			System.out.print("1.회원가입 2.로그인    선택> ");
 			int ch = sc.nextInt();
 
-			if( ch == 1 ) {
+			if( ch == 1 ) {	// IF CH=1 START
+				System.out.print("아이디를 입력해주세요 > ");
+				String id = sc.next();
+				System.out.print("비밀번호를 입력해주세요 > ");
+				String pw = sc.next();
+				System.out.print("이름을 입력해주세요 > ");
+				String name = sc.next();
+				System.out.print("전화번호를 입력해주세요 (-빼고입력) > ");
+				String phone = sc.next();
+				System.out.print("나이를 입력해주세요 > ");
+				String age = sc.next();
 
-			}
-			else if( ch == 2 ) {
+				Member member = new Member(id, pw, name, phone, age);
+				System.out.println(member.toString());
 
-			}
-
+				for(int i=0; i<memberArray.length; i++){	// FOR START
+					if(memberArray[i]==null){	// IF START
+						memberArray[i]=member;
+						System.out.println("회원가입 성공!");
+						break;
+					}	// IF END
+				}	// FOR END
+			}	// IF CH=1 END
+			else if( ch == 2 ) {	// IF CH=2 START
+				for(int i=0; i<memberArray.length; i++){	// FOR START
+					System.out.print("아이디를 입력해주세요 > ");
+					String id = sc.next();
+					System.out.print("비밀번호를 입력해주세요 > ");
+					String pw = sc.next();
+					if(memberArray[i]!=null&&memberArray[i].id.equals(id) && memberArray[i].pw.equals(pw)){
+						System.out.println("로그인 성공!");
+						break;
+					}else{
+						System.out.println("로그인 실패!");
+						break;
+					}
+				}	// FOR END
+			}	// IF CH=2 END
 		} // w e 
 	} // m e 
 } // c e 
