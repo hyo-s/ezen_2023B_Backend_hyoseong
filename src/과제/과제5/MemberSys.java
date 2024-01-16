@@ -28,18 +28,18 @@ public class MemberSys {
 				String age = sc.next();
 
 				Member member = new Member(id, pw, name, phone, age);
-				System.out.println(member.toString());
 
 				for(int i=0; i<memberArray.length; i++){	// FOR START
 					if(memberArray[i]==null){	// IF START
 						memberArray[i]=member;
+						System.out.println(memberArray[i].toString());
 						System.out.println("회원가입 성공!");
 						break;
 					}	// IF END
 				}	// FOR END
 			}	// IF CH=1 END
 			else if( ch == 2 ) {	// IF CH=2 START
-				for(int i=0; i<memberArray.length; i++){	// FOR START
+				for (int i=0; i<memberArray.length; i++){	// FOR START
 					System.out.print("아이디를 입력해주세요 > ");
 					String id = sc.next();
 					System.out.print("비밀번호를 입력해주세요 > ");
