@@ -51,6 +51,7 @@ public class MemberDto {    // CLASS START
     }
 
 // ==================================== METHOD ( SETTER / GETTER ) ==================================== //
+    // PRIVATE에 접근을 할때 아래 메소드를 활용해서 접근한다.
     public int getNo() {
         return no;
     }
