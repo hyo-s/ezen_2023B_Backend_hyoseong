@@ -5,7 +5,6 @@ public class MemberSys { // class s
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		Member[] 객체배열 = new Member[100];
 
 		while(true) {
 
@@ -14,83 +13,108 @@ public class MemberSys { // class s
 			int ch = sc.nextInt();
 
 			if( ch == 1 ) {		// IF CH=1 START
-				System.out.print("아이디 > ");
-				String id = sc.next();
-				System.out.print("비밀번호 > ");
-				String pw = sc.next();
-				System.out.print("이름 > ");
-				String name = sc.next();
-				System.out.print("전화번호 > ");
-				String phone = sc.next();
-				System.out.print("나이 > ");
-				String age = sc.next();
-
-				Member member = new Member(id, pw, name, phone, age);
-
-				for(int i=0; i<객체배열.length; i++){
-					if(객체배열[i]==null){
-						객체배열[i]=member;
-						System.out.println("안내] 회원가입 성공!");
-						System.out.println(member.toString());
-						break;
-					}
-				}
+				signup();
 			}	// IF CH=1 END
 			else if( ch == 2 ) {	// IF CH=2 START
-				System.out.print("아이디 > ");
-				String id = sc.next();
-				System.out.print("비밀번호 > ");
-				String pw = sc.next();
-
-				for(int i=0; i<객체배열.length; i++) {
-					if (객체배열[i] != null && 객체배열[i].getId().equals(id)) {
-						if (객체배열[i] != null && 객체배열[i].getPw().equals(pw)) {
-							System.out.println("안내] 로그인 성공!");
-							break;
-						} else {
-							System.out.println("안내] 로그인 실패!");
-							break;
-						}
-					}
-				}
+				login();
 			}	// IF CH=2 END
 			else if( ch == 3 ) {	// IF CH=3 START
-				System.out.print("이름 > ");
-				String name = sc.next();
-				System.out.print("전화번호 > ");
-				String phone = sc.next();
-
-				for(int i=0; i<객체배열.length; i++){
-					if(객체배열[i]!=null && 객체배열[i].getName().equals(name) && 객체배열[i].getPhone().equals(phone)) {
-						System.out.println("안내] 아이디 > " + 객체배열[i].getId());
-						break;
-					}else{
-						System.out.println("안내] 찾으시는 아이디가 없습니다.");
-						break;
-					}
-				}
-
+				findId();
 			}	// IF CH=3 END
 			else if( ch == 4 ) {	// IF CH=4 START
-				System.out.print("아이디 > ");
-				String id = sc.next();
-				System.out.print("전화번호 > ");
-				String phone = sc.next();
+				findPw();
+			}	// IF CH=4 END
+		} // w e
+	} // m e
+// ==================================== 풀이 ==================================== //
+	static Scanner scanner = new Scanner(System.in);
+	static Member[] 객체배열 = new Member[100];
 
-				for(int i=0; i<객체배열.length; i++){
-					if(객체배열[i]!=null && 객체배열[i].getId().equals(id) && 객체배열[i].getPhone().equals(phone)) {
+// ==================================== 회원가입 ==================================== //
+	public static void signup(){	// METHOD SIGNUP START
+		System.out.print("아이디 > ");
+		String id = scanner.next();
+		System.out.print("비밀번호 > ");
+		String pw = scanner.next();
+		System.out.print("이름 > ");
+		String name = scanner.next();
+		System.out.print("전화번호 > ");
+		String phone = scanner.next();
+		System.out.print("나이 > ");
+		String age = scanner.next();
+
+		Member member = new Member(id, pw, name, phone, age);
+
+		for(int i=0; i<객체배열.length; i++){	// FOR START
+			if(객체배열[i]==null){
+				객체배열[i]=member;
+				System.out.println("안내] 회원가입 성공!");
+				System.out.println(member.toString());
+				break;
+			}
+		}	//FOR END
+	}	// METHOD SIGNUP END
+
+// ==================================== 로그인 ==================================== //
+	public static void login(){		// METHOD LOGIN START
+		System.out.print("아이디 > ");
+		String id = scanner.next();
+		System.out.print("비밀번호 > ");
+		String pw = scanner.next();
+
+		for(int i=0; i<객체배열.length; i++) {	// FOR START
+			if(객체배열[i] != null){
+				if (객체배열[i].getId().equals(id) && 객체배열[i].getPw().equals(pw)) {
+					System.out.println("안내] 로그인 성공!");
+					break;
+				}
+			}else {
+				System.out.println("안내] 로그인 실패!");
+				break;
+			}
+		}	// FOR END
+	}	// METHOD LOGIN END
+
+// ==================================== 아이디 찾기 ==================================== //
+	public static void findId() {	// METHOD FINDID START
+		System.out.print("이름 > ");
+		String name = scanner.next();
+		System.out.print("전화번호 > ");
+		String phone = scanner.next();
+
+		for (int i = 0; i < 객체배열.length; i++) {	// FOR START
+			if (객체배열[i] != null) {
+				if (객체배열[i].getName().equals(name) && 객체배열[i].getPhone().equals(phone)) {
+					System.out.println("안내] 아이디 > " + 객체배열[i].getId());
+					break;
+				}
+			} else {
+				System.out.println("안내] 찾으시는 아이디가 없습니다.");
+				break;
+			}
+		}	// FOR END
+	}	// METHOD FINDID END
+
+// ==================================== 비밀번호 찾기 ==================================== //
+		public static void findPw(){	// METHOD FINDPW START
+			System.out.print("아이디 > ");
+			String id = scanner.next();
+			System.out.print("전화번호 > ");
+			String phone = scanner.next();
+
+			for(int i=0; i<객체배열.length; i++){	// FOR START
+				if(객체배열[i]!=null){
+					if(객체배열[i].getId().equals(id) && 객체배열[i].getPhone().equals(phone)) {
 						System.out.println("안내] 비밀번호 > " + 객체배열[i].getPw());
 						break;
-					}else{
-						System.out.println("안내] 찾으시는 아이디가 없습니다.");
-						break;
 					}
+				}else {
+					System.out.println("안내] 찾으시는 아이디 및 비밀번호가 없습니다.");
+					break;
 				}
+			}	// FOR END
+		}	// METHOD FINDPW END
 
-			}	// IF CH=4 END
-
-		} // w e
-	} // m e 
 } // class e 
 /*
 	주제 : 회원제 시스템 part2

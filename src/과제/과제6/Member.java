@@ -2,6 +2,8 @@ package 과제.과제6; // PACKAGE NAME
 
 import day10.Account;
 
+import java.util.Scanner;
+
 public class Member {   // CLASS START
 
 // =============================== 필드 =============================== //
