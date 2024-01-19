@@ -5,9 +5,7 @@ public class Controller {   // CLASS START
 // ==================================== 싱글톤 ==================================== //
     private static Controller controller = new Controller();    // 싱글톤 필드
     private Controller(){}  // 싱글톤 생성자
-    public  static Controller getInstance(){
-        return controller;
-    }   // 싱글톤 메소드
+    public  static Controller getInstance(){return controller;}   // 싱글톤 메소드
 
 // ==================================== 회원가입 ==================================== //
     public boolean signup(MemberDto memberDto){ // METHOD SIGNUP START

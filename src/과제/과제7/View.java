@@ -7,9 +7,7 @@ public class View { // CLASS START
 // ==================================== 싱글톤 ==================================== //
     private static View view = new View();// 싱글톤 필드
     private View(){}    // 싱글톤 생성자
-    public  static View getInstance(){
-        return view;
-    }   // 싱글톤 메소드
+    public  static View getInstance(){return view;}   // 싱글톤 메소드
 
 // ==================================== 스캐너 ==================================== //
     Scanner scanner = new Scanner(System.in);   // 스캐너

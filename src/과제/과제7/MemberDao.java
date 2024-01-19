@@ -7,9 +7,7 @@ public class MemberDao {    // CLASS START
 // ==================================== 싱글톤 ==================================== //
     private static MemberDao memberDao = new MemberDao();   // 싱글톤 필드
     private MemberDao(){}   // 싱글톤 생성자
-    public  static MemberDao getInstance(){
-        return memberDao;
-    }   // 싱글톤 메소드
+    public  static MemberDao getInstance(){return memberDao;}   // 싱글톤 메소드
 // ==================================== 배열 ==================================== //
 
     ArrayList<MemberDto> memberDtos = new ArrayList<>();
