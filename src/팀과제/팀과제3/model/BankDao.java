@@ -25,7 +25,7 @@ public class BankDao {
 
     public int 계좌찾기(){
         // 신한 배열 찾아서 입력한 계좌번호가 저장된 계좌번호랑 일치하면 1 반환
-        for(int i = 0; i < bankArray; i++){
+        for(int i = 0; i < bankArray.size(); i++){
             if(bankArray.get(i).get계좌번호().equals(은행객체.get계좌번호())){
                 return bankArray.get(i).get은행코드();
             }
