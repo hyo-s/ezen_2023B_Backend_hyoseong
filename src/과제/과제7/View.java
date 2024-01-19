@@ -114,7 +114,7 @@ public class View { // CLASS START
         String phone = scanner.next();
 
         MemberDto memberDto = new MemberDto();
-        memberDto.setName(id);
+        memberDto.setId(id);
         memberDto.setPhone(phone);
 
         boolean result = Controller.getInstance().findPw(memberDto);
