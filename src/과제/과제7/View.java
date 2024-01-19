@@ -3,21 +3,20 @@ package 과제.과제7; // PACKAGE NAME
 import java.util.Scanner;
 
 public class View { // CLASS START
-    // 싱글톤 필드
-    private static View view = new View();
 
-    // 싱글톤 생성자
-    private View(){}
-
-    // 싱글톤 메소드
+// ==================================== 싱글톤 ==================================== //
+    private static View view = new View();// 싱글톤 필드
+    private View(){}    // 싱글톤 생성자
     public  static View getInstance(){
         return view;
-    }
+    }   // 싱글톤 메소드
 
-    Scanner scanner = new Scanner(System.in);
+// ==================================== 스캐너 ==================================== //
+    Scanner scanner = new Scanner(System.in);   // 스캐너
 
-    public void run(){
-        while (true){
+// ==================================== 프로그램 실행 ==================================== //
+    public void run(){  // METHOD RUN START
+        while (true){   // WHILE START
             System.out.println("======= 메인페이지 ======");
             System.out.println("1.회원가입 | 2.로그인 | 3.아이디 찾기 | 4.비밀번호 찾기");
             System.out.print("선택> ");
@@ -35,10 +34,10 @@ public class View { // CLASS START
             if(ch==4){
                 findPw();
             }
-        }
-    }
-
-    public void signup(){
+        }   // WHILE END
+    }   // METHOD RUN END
+// ==================================== 회원가입 ==================================== //
+    public void signup(){   // METHOD SIGNUP START
         System.out.print("아이디 > ");
         String id = scanner.next();
         System.out.print("비밀번호 > ");
@@ -60,9 +59,9 @@ public class View { // CLASS START
         }else {
             System.out.println("회원가입 실패!");
         }
-    }
-
-    public void login(){
+    }   // METHOD SIGNUP END
+// ==================================== 로그인 ==================================== //
+    public void login(){    // METHOD LOGIN START
         System.out.print("아이디 : ");
         String id = scanner.next();
         System.out.print("비밀번호 : ");
@@ -80,9 +79,9 @@ public class View { // CLASS START
             System.out.println("로그인 실패!");
         }
 
-    }
-
-    public void findId(){
+    }   // METHOD SIGNUP END
+// ==================================== 아이디 찾기 ==================================== //
+    public void findId(){   // METHOD FINDID START
         System.out.print("이름 > ");
         String name = scanner.next();
         System.out.print("전화번호 > ");
@@ -94,20 +93,20 @@ public class View { // CLASS START
 
         boolean result = Controller.getInstance().findId(memberDto);
 
-        for(int i=0; i<MemberDao.getInstance().memberDtos.size(); i++){
-            if(result){
+        for(int i=0; i<MemberDao.getInstance().memberDtos.size(); i++){ // FOR START
+            if(result){ // IF START
                 if(name.equals(MemberDao.getInstance().memberDtos.get(i).getName())){
                     if(phone.equals(MemberDao.getInstance().memberDtos.get(i).getPhone())){
                         System.out.println("아이디 > " + MemberDao.getInstance().memberDtos.get(i).getId());
                     }
                 }
-            }else {
+            }else { // IF END, ELSE START
                 System.out.println("찾으시는 아이디가 없습니다.");
-            }
-        }
-    }
-
-    public void findPw(){
+            }   // ELSE END
+        }   // FOR END
+    }   // METHOD FINDID END
+// ==================================== 비밀번호 찾기 ==================================== //
+    public void findPw(){       // METHOD FINDPW START
         System.out.print("아이디 > ");
         String id = scanner.next();
         System.out.print("전화번호 > ");
@@ -119,20 +118,20 @@ public class View { // CLASS START
 
         boolean result = Controller.getInstance().findPw(memberDto);
 
-        for(int i=0; i<MemberDao.getInstance().memberDtos.size(); i++){
-            if(result){
+        for(int i=0; i<MemberDao.getInstance().memberDtos.size(); i++){ // FOR START
+            if(result){ // IF START
                 if(id.equals(MemberDao.getInstance().memberDtos.get(i).getId())){
                     if(phone.equals(MemberDao.getInstance().memberDtos.get(i).getPhone())){
                         System.out.println("비밀번호 > " + MemberDao.getInstance().memberDtos.get(i).getPw());
                     }
                 }
-            }else{
+            }else{  // IF END // ELSE START
                 System.out.println("찾으시는 아이디 및 비밀번호가 없습니다.");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
+            }   // ELSE END
+        }   // FOR END
+    }   // METHOD FINDPW START
+// ==================================== 메인 ==================================== //
+    public static void main(String[] args) {    // MAIN START
         View.getInstance().run();
-    }
+    }   // MAIN END
 }   // CLASS END

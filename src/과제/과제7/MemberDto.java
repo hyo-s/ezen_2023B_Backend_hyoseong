@@ -2,26 +2,23 @@ package 과제.과제7; // PACKAGE NAME
 
 public class MemberDto {    // CLASS START
 
-    // 1. 필드
+// ==================================== 필드 ==================================== //
     private String id;
     private String pw;
     private String name;
     private String phone;
     private String age;
+// ==================================== 생성자 ==================================== //
+    public MemberDto( ){ }  // 기본생성자
 
-    // 2. 생성자
-    public MemberDto( ){ }
-
-    public MemberDto(String id, String pw, String name, String phone, String age) {
+    public MemberDto(String id, String pw, String name, String phone, String age) { // 풀 생성자
         this.id = id;
         this.pw = pw;
         this.name = name;
         this.phone = phone;
         this.age = age;
     }
-
-    // 3. 메소드
-
+// ==================================== 메소드 TOSTRING ==================================== //
     @Override
     public String toString() {
         return "MemberDto{" +
@@ -33,6 +30,7 @@ public class MemberDto {    // CLASS START
                 '}';
     }
 
+// ==================================== 메소드 GETTER / SETTER ==================================== //
     public String getId() {
         return id;
     }
