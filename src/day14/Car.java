@@ -9,6 +9,7 @@ public class Car {  // CLASS START
     // KumhoTire kumhoTire;
 
     // 3. 타이어 타입 + 하위 객체 ( 한국타이어, 금호타이어 )
+        // Tire 타입의 tire 변수이름을 가진
     Tire tire;
 
     // 4. 객체 + 자바의 모든 객체

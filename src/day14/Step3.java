@@ -3,6 +3,7 @@ package day14;  // PACKAGE NAME
 public class Step3 {    // CLASS START
     public static void main(String[] args) {    // MAIN START
 
+// ================================ 필드의 다형성 ================================ //
         // 객체 생성
         Car myCar = new Car();  // myCar.tire = null;
         // myCar.run(); // null 참조값이 없다. -> (.) 도트연산자 사용불가.
