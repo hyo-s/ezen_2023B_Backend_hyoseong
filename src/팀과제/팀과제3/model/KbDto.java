@@ -2,7 +2,6 @@ package 팀과제.팀과제3.model;
 
 public class KbDto extends BankDto{
 
-    static final int 은행코드 = 2;
 
 
     //기본생성자

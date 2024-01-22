@@ -2,7 +2,7 @@ package 팀과제.팀과제3.model;
 
 public class ShDto extends BankDto{
 
-    static final int 은행코드 = 1;
+
 
     public ShDto(){}
 
@@ -10,12 +10,13 @@ public class ShDto extends BankDto{
         super(계좌번호, 예금주, 금액);
     }
 
-    private int 포인트;
+    private int 마일리지;
 
-    public int get포인트() {
-        return 포인트;
+    public int get마일리지() {
+        return 마일리지;
     }
-    public void set포인트(int 포인트) {
-        this.포인트 = 포인트;
+
+    public void set마일리지(int 마일리지) {
+        this.마일리지 = 마일리지;
     }
 }
