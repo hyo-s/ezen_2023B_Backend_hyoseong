@@ -24,7 +24,7 @@
 			1. not null
             2. unique
             3. default 기본값
-            4. 
+            4. primary key
 */
 # 1. 데이터베이스 생성 / 사용
 drop database if exists test4;
