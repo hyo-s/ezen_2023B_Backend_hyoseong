@@ -3,7 +3,7 @@
 		 - 관계형 데이터베이스 : 행/열 이루어진 데이터모임(테이블)이면서 테이블 간의 관계
 			여러개 테이블 보관
          - SQL : 데이터베이스에서 사용되는 데이터처리 언어.
- --------------------------- DDL : 정의어  ---------------------------
+--------------------------- DDL : 정의어  ---------------------------
 			DROP
 				drop database if exists 데이터베이스명
                 drop table if exists 테이블명
@@ -16,7 +16,7 @@
 				특정 필드 : insert into 테이블명( 필드명, 필드명 ) values( 값1, 값2 );
 			select : 레코드 검색
 				모든 필드(*와일드카드)의 레코드 검색 : select * from 테이블명;
-			update : 레코드의 필드값 변경
+			update : 레코드의 필드 값 변경
 				update 테이블명 set 수정할필드명 = 수정할값, 수정할필드명 = 수정할값;
 			delete : 레코드 삭제
 				delete from 테이블명;
@@ -24,7 +24,8 @@
 			1. not null
             2. unique
             3. default 기본값
-            4. primary key
+            4. primary key (pk필드)
+            5. foreign key references 참조할테이블명 (참조할pk필드)
 */
 # 1. 데이터베이스 생성 / 사용
 drop database if exists test4;
