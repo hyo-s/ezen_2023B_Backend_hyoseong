@@ -906,3 +906,71 @@ P.373 ( 인터페이스 ) 다형성
             .get타입( 호출할 필드순서번호 or 필드명 );
             .getString( ) : 문자타입 호출
             .getInt( ) : 정수타입 호출
+
+=====================================================================================
+            회원가입
+                화면구현         : print, scanner
+                가공·전달처리     : 입력/출력 데이터 유효성 검사·전달·타입변환
+                비즈니스 로직     : 데이터 저장 SQL INSERT
+
+    회원가입 MVC 패턴 설계
+        1. 회원가입에 들어갈 정보 [ 테이블 설계 ]      = 원본
+            회원 번호
+            회원 아이디
+            회원 비밀번호
+            회원 전화번호
+            회원 가입날짜
+
+        2. DTO 설계                               = 원본 복사본
+            회원 번호
+            회원 아이디
+            회원 비밀번호
+            회원 전화번호
+            회원 가입날짜
+            + DB 없는 필드 추가 가능
+
+        3. 메소드 설계 [ MVC ] 매개변수 / 리턴
+
+    <회원가입 기능>
+    VIEW                            CONTROLLER                      MODEL
+    void signup(){ }                void signup(memberDto){ }       int signup(memberDto){ }
+                ---DTO--->      전달·유효성검사          ---DTO--->                SQL
+                아이디,비밀번호,전화번호                  유효성검사가 통과된 DTO
+                <---int---                             <---boolean---
+                0:성공 1:DB오류                         true:중복O, false:중복X
+                2:아이디중복
+                3~:각 필드별 유효성 검사
+
+    <로그인 기능>
+    VIEW                            CONTROLLER                      MODEL
+    void login(){ }                boolean login(memberDto){ }       void login(memberDto){ }
+                ---DTO--->         전달·유효성검사             ---DTO--->          SQL
+                아이디,비밀번호,전화번호                       아이디,비밀번호,전화번호
+                <---boolean---                              <---boolean---
+                true:성공 false:실패        로그인정보         true:성공 false:실패
+                                                                    int findMno(String id){ }
+                                                            ---ID--->           SQL
+                                          로그인 상태 로직    아이디
+                                                            <---boolean---
+                                                            0:없음, 1~:회원번호
+
+    <로그아웃 기능>
+
+
+
+
+
+
+
+MVC패턴
+    소프트웨어 디자인 패턴
+    관심사 분리 : 업무의 분리와 향상된 관리
+
+    view        : 화면구현 UI           (입출력)
+        DTO     : 데이터 이동 객체
+    controller  : 중계역할              (VIEW와 MODEL 사이 전달, 가공)
+        DTO     : 데이터 이동 객체
+    model       : 데이터 비즈니스 로직    (DAO DB SQL 처리)
+
+    DTO         : 데이터 이동 객체
+    DAO         : 데이터 접근 객체
