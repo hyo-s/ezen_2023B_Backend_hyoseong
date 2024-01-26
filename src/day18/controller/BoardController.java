@@ -36,6 +36,7 @@ public class BoardController {  // CLASS START
 
         // 3. 가공처리 / 로직
             // 1. 글쓰기 요청
+        boardDto.setMno_fk(MemberController.getInstance().loginMno);
         result = BoardDao.getInstance().write(boardDto);
 
         // 2. 반환

@@ -45,7 +45,7 @@ public class BoardDao extends Dao{ // CLASS START
     public boolean write(BoardDto boardDto){
         try {
             // 1. SQL 작성
-            String sql = "insert into board(btitle, bcontent, bveiw) values(?,?,?)";
+            String sql = "insert into board(btitle, bcontent, cno) values(?,?,?)";
             // 2. SQL 기재한다.
             ps = conn.prepareStatement(sql);
             // 3. SQL 실행한다.

@@ -50,11 +50,10 @@ public class BoardView {    // CLASS START
 
                     // 2. 객체화
                     BoardDto boardDto = new BoardDto(btitle, bcontent);
-                    boardDto.setMno_fk(cno);
+                    boardDto.setCno_fk(cno);
 
                     // 3. 전달 후 결과
                     boolean writeResult = BoardController.getInstance().write(boardDto);
-
 
                     // 4. 결과 출력
                     if(writeResult){
