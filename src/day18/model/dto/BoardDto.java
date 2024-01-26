@@ -25,13 +25,9 @@ public class BoardDto { // CLASS START
 
     // ============== 추가 생성자(필요시 작성) ============== //
 
-
-    public BoardDto(String btitle, String bcontent, int bview, int cno_fk, int mno_fk) {
+    public BoardDto(String btitle, String bcontent) {
         this.btitle = btitle;
         this.bcontent = bcontent;
-        this.bview = bview;
-        this.cno_fk = cno_fk;
-        this.mno_fk = mno_fk;
     }
 
     // ================================= 메소드 ================================= //
