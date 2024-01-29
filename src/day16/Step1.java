@@ -20,6 +20,5 @@ public class Step1 {    // CLASS START
 
         System.out.println("리모콘 최고 볼륨 : " + RemoteControl.MAX_VOLUME);
         System.out.println("리모콘 최저 볼륨 : " + RemoteControl.MIN_VOLUME);
-
     }   // MAIN END
 }   // CLASS END
