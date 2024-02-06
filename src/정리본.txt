@@ -1083,3 +1083,114 @@ p.464
             List : ArrayList, Vector, LinkedList
             Set  : HashSet, TreeSet
             Map  : HashMap, Hashtable, TreeMap, Properties
+=====================================================================================
+JDK : 자바 개발도구 ( JAVAC 포함, JAR 포함 )
+라이브러리 : ( 도구 ) 클래스 / 인터페이스 모임
+프레임워크 : ( 틀 ) 프로그램 개발하기 위해 틀을 제공하는 프로그램
+
+SPRING : 자바를 이용한 라이브러리들의 집합들로 만든 프레임워크
+SPRING BOOT : SPRING 간소화 설정
+
+1. 프로젝트 준비
+    Project : Gradle - Groovy
+        Gradle : 빌드 관리 도구 VS Maven
+            외부 라이브러리들을 설치하고 관리해주는 시스템
+            Language : JAVA
+            SPRING BOOT : 3.X [ 추후에 변경 가능 ]
+            PACKAGING : JAR
+            JAVA : 17 ( SPRING BOOT 3.X이상 )
+
+2. 프로젝트 메타데이터 / 정보
+    Artifact : 홈페이지 명
+    Package name : 홈페이지 HTTP 주소를 반대로 ( ezen.com / com.ezen )
+
+3. 외부 라이브러리 추가 Dependencies
+        https://mvnrepository.com/ - 외부 라이브러리 공유 사이트
+        1. SPRING WEB
+        2. H2 Database : ( 테스트 / 간단한 개발 / 영구저장X ) DB서버없이 웹서버로 데이터 베이스 제공 < -- > MYSQL
+        3. Mustache : 화면구현 ( 템플릿 엔진 )
+            템플릿 엔진 : 1.JSP 2.(*)Mustache 3.Thymeleaf 4.(*)React.js 5.Vue.js
+        4. SPRING DATA JPA : RDBMS를 JAVA 객체지향으로 매칭하는 도구
+
+        MYSQL 라이브러리
+            runtimeOnly 'com.mysql:mysql-connector-j'
+        MUSTACHE 라이브러리
+            implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+
+4. 프로젝트 파일 구조
+    .idea                                       : 인텔리제이 설정 파일
+    Gradle                                      : 그레이들(빌드) 실행 도구
+    src (*)                                     : 코드 소스 파일
+        - main
+            -- java                             : 자바 소스 파일
+                --- 패키지
+            -- resources                        : 프로젝트 설정 파일, 정적(html.css.js.img 등등) 외부 파일
+                --- static                      : HTML,CSS,JS,IMG 등등
+                --- templates                   : 템플릿( JSP, Mustache, Thymeleaf, React.js, Vue.js 등등 )
+                --- application.properties      : 프로젝트 설정 파일
+        - test                                  : 테스트 소스 파일
+    gitignore                                   : git commit 무시할 파일
+    build.gradle (*)                            : 프로젝트에 등록할 라이브러리
+    외부라이브러리 : JDK17, 스프링부트 관련 클래스들
+
+5. 프로젝트 실행
+    톰캣 ( was : 자바 웹서버 프로그램 ) 내장 서버 : PORT 8080
+    PORT 변경하는 방법
+        server.properties 파일
+            server.port = 사용할 PORT 번호
+    - IP    : 네트워크를 사용하는 PC의 식별번호
+    - PORT  : 컴퓨터 내에서 프로그램들의 식별번호
+        3306 : MYSQL
+        8080 : 톰캣
+
+프로토콜 ( PROTOCOL ) 미리 만든 규약 / 약속 / 규칙 / 패턴
+    HTTP ( HYPER TEXT TRANSFER PROTOCOL ), IP
+        1. IP주소:PORT번호
+        2. /경로 @GetMapping ("/hi")
+
+
+IP 인터넷 프로토콜 ( INTERNET PROTOCOL )
+    네트워크를 사용하는 컴퓨터의 고유 식별번호
+        프로토콜 규칙이 있다.
+            규칙
+                ipv4
+                    첫 자리는 127 사이 사용
+                    0 ~ 255 사이 숫자로 4자리로 구성된 네자리 번호
+                ipv6
+                    0 ~ 255 사이 숫자로 6자리로 구성된 번호
+
+    localhost : 내 컴퓨터 뜻 / 127.0.0.1
+    내 아이피 알기 cmd -> ipconfig
+
+PORT
+    인터넷 프로토콜 내 프로세스의 식별번호
+    0 ~ 65,535까지 중 사용 가능 [ 0 ~ 1023 ] 주요 통신이 이미 정해져 있음.
+        - 주요
+        HTTP : 80
+            DNS : 도메인 네임 서비스
+        HTTPS : 443
+        MYSQL : 3306
+    그 외 중복없이 자유적으로 할당해서 사용
+        MYSQL : 3306
+        톰캣 : 8080
+IP와 PORT 이용한 네트워크 식별
+    http://ip주소:포트번호
+        http://localhost:8080
+        http://127.0.0.1:8080
+        httt://192.168.17.12:8080
+
+해당 IP와 PORT 일치한 서버PC에게 자원 ( 데이터 HTML 요청하기 )
+
+=====================================================================================
+뷰 템플릿
+    웹 페이지[HTML]를 하나의 틀로 만들고 변수를 삽입
+    JSP, 머스테치, 타임리프 등등
+
+MYSQL 라이브러리
+    runtimeOnly 'com.mysql:mysql-connector-j'
+MUSTACHE 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+
+
