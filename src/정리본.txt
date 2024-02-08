@@ -1187,10 +1187,46 @@ IP와 PORT 이용한 네트워크 식별
     웹 페이지[HTML]를 하나의 틀로 만들고 변수를 삽입
     JSP, 머스테치, 타임리프 등등
 
-MYSQL 라이브러리
-    runtimeOnly 'com.mysql:mysql-connector-j'
-MUSTACHE 라이브러리
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
+
+
+
+=====================================================================================
+SPRING
+    한글 인코딩
+        server.servlet.encoding.force-response=true
+        메뉴 -> 도움말 -> 사용자 지정 VM 옵션 편집
+            -Dfile.encoding=UTF-8
+            -Dconcole.encoding=UTF-8
+    MYSQL 라이브러리
+        runtimeOnly 'com.mysql:mysql-connector-j'
+    MUSTACHE 라이브러리
+        implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    JQUERY
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+=====================================================================================
+JAVA 프로그램 EXE 실행 파일 만들기
+    [ JAR 추출 ]
+    1. 해당 MAIN 실행
+    2. 메뉴 -> 프로젝트 구조 -> 아티팩트 -> 추가
+    3. JAR -> 종속 요소 포함 모듈에서
+    4. 메인클래스에 변환할 클래스 선택 -> 확인
+    5. 출력 디렉터리 : 추출한 JAR을 저장할 경로 설정 -> 확인
+    6. 메뉴 -> 빌드 -> 아티팩트 빌드 -> 빌드
+
+    [ JAR -> EXE 변환 ]
+    준비물 : JDK, launch4j
+    JDK : https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+    launch4j : https://launch4j.sourceforge.net/
+
+    [Basic]
+        Output File : 변환했을 때 EXE 경로
+        Jar : 변환할 JAR 파일 경로
+    [Header]
+        Header Type : Console
+    [JRE]
+        Min JRE Version : 1.8
+    =================
+    변환 : 메뉴 -> 톱니바퀴 아이콘 클릭 -> config 저장
 
 
