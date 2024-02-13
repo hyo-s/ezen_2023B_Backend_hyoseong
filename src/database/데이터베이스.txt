@@ -58,7 +58,8 @@
 		use : 사용할 데이터베이스 선택
 			use 데이터베이스명;
 		truncate : 데이터 삭제
-	2. DML( Data Manipuldation Language ) 조작어 *	[ RollBack 불가능 ]
+		    truncate table 테이블명;
+	2. DML( Data Manipulation Language ) 조작어 *	[ RollBack 불가능 ]
 		[C] insert : 레코드 삽입
 			모든 레코드 삽입
 				insert into 테이블명 values ( 값1, 값2 ); - 필드의 순서에 맞게 대입
@@ -80,13 +81,43 @@
             특정(조건에 충족하는) 레코드 삭제
 				delete from 테이블명 where 조건식;
 	3. 제약조건
-		not null : 필드에 null을 넣지 않겠다
+	    조건
+		not null : 필드에 NULL을 넣지 않겠다
         unique : 중복을 없앤다
         default 값 : 필드에 값을 입력하지 않을때 기본값
-        primary key ( pk필드명 )
-        foreign key ( fk필드명 ) references 참조할테이블명 ( 참조할pk필드명 )
-
-	4. where 조건절
+        auto_increment : 필드에 자동으로 번호 부여
+        primary key
+            constraint 제약조건명 primary key( pk필드명 )
+        foreign key
+            constraint 제약조건명 foreign key( fk필드명 ) references 참조할테이블명 ( 참조할pk필드명 )
+        옵션
+        restrict : PK데이터를 삭제/수정할 때 PK를 참조하는 FK데이터가 있으면 삭제/수정을 하지 않음
+            on delete restrict : 삭제
+            on update restrict : 수정
+        cascade : PK데이터를 삭제/수정할 때 PK를 참조하는 FK데이터가 있으면 같이 삭제/수정 함
+            on delete cascade : 삭제
+            on update cascade : 수정
+        set null : PK데이터를 삭제/수정할 때 PK를 참조하는 FK데이터가 있으면 PK데이터를 삭제/수정하고 FK데이터를 NULL로 변경
+            on delete set null : PK 삭제 후 FK NULL로 변경
+            on update set null : PK 수정 후 FK NULL로 변경
+	4. WHERE & ON
+        where
+            select * from 테이블명A, 테이블명B where 테이블명A_PK필드명 = 테이블명B_FK필드명;
+                테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같으면 검색
+        내부 JOIN
+            select * from 테이블명A natural join 테이블명B;
+                테이블명A와 테이블명B에서 같은 레코드를 조합 후 검색
+            select * from 테이블명A join 테이블명B on 테이블명A_PK필드명 = 테이블명B_FK필드명;
+                테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같으면 검색
+            select * from 테이블명A join 테이블명B using(필드명);
+                테이블명A과 테이블명B에서 필드명을 사용할 때 조합 후 검색
+            select * from 테이블명A inner join 테이블명B on 테이블명A_PK필드명 = 테이블명B_FK필드명;
+                테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같을 때 조합 후 검색
+        외부 JOIN
+            select * from 테이블명A right outer join 테이블명B on 테이블명A_PK필드명 = 테이블명B_FK필드명;
+                테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같을 때 테이블명B 기준으로 테이블명A 조합 후 검색
+            select * from 테이블명A left outer join 테이블명B on 테이블명A_PK필드명 = 테이블명B_FK필드명;
+                테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같을 때 테이블명A 기준으로 테이블명B 조합 후 검색
 ===============================================================================================
 자바와 DB 서버 연결
     0.JDBC Driver : 각 DBMS 회사에서 다운로드 받으세요.
@@ -110,3 +141,40 @@
     2. mysql-connector-j-8.3.0.jar -> 우클릭 -> 라이브러리로 추가
     3. [확인]
         메뉴 -> 파일 -> 프로젝트 구조 -> (사이드메뉴) 라이브러리
+===============================================================================================
+1. 개발환경 : JDK17, IntelliJ 무료버전
+2. 프로젝트 생성
+    Gradle : 외부 라이브러리를 자동으로 빌드
+    Language : JAVA
+    Spring Boot : 3.X 이상
+    Project Metadata            * 프로젝트 정보
+        Group           : com             * 주로 홈페이지의 URL 뒤에서부터 패키지 생성
+        Artifact        : springMvcTest1
+        Name            : springMvcTest1
+        Description     : MvcTest   * 간단한 프로젝트 설명
+        Package name    : com.springMvcTest1
+        Packaging       : JAR / WAR
+        Java            : 17
+    Dependencies
+        Spring Web      : * SPRING MVC 패턴 지원, 내장 웹 서버, 빌드
+        Lombok          : * 코드 간소화, 로그
+        MySQL Driver    : * DB 연동
+        Mustache        : * 화면 구현 VIEW
+3. 인텔리제이에서 프로젝트 열기
+    1) 파일 -> 열기 -> springMvcTest1 폴더 찾아서 열기
+    2) SpringMvcTest1Application 클래스 내 main 함수 실행
+    3) 브라우저에서 http://localhost:8080 접속
+
+4. DTO 설계
+    MYSQL DB 생성 -> DTO 설계 -> 필드
+    DTO @어노테이션
+        @AllArgsConstructor
+        @NoArgsConstructor
+        @Getter
+        @Setter
+        @ToString
+
+5. DB 연결
+===============================================================================================
+구글 크롬 브라우저 확장프로그램
+    Talend API - HTTP 통신 TEST
