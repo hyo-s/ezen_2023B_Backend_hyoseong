@@ -1304,3 +1304,39 @@ JAVA 프로그램 EXE 실행 파일 만들기
         3. forEach() 이용
             forEach( s -> 실행문)
 =====================================================================================
+1. 개발환경 : JDK17, IntelliJ 무료버전
+2. 프로젝트 생성
+    Gradle : 외부 라이브러리를 자동으로 빌드
+    Language : JAVA
+    Spring Boot : 3.X 이상
+    Project Metadata            * 프로젝트 정보
+        Group           : com             * 주로 홈페이지의 URL 뒤에서부터 패키지 생성
+        Artifact        : springMvcTest1
+        Name            : springMvcTest1
+        Description     : MvcTest   * 간단한 프로젝트 설명
+        Package name    : com.springMvcTest1
+        Packaging       : JAR / WAR
+        Java            : 17
+    Dependencies
+        Spring Web      : * SPRING MVC 패턴 지원, 내장 웹 서버, 빌드
+        Lombok          : * 코드 간소화, 로그
+        MySQL Driver    : * DB 연동
+        Mustache        : * 화면 구현 VIEW
+3. 인텔리제이에서 프로젝트 열기
+    1) 파일 -> 열기 -> springMvcTest1 폴더 찾아서 열기
+    2) SpringMvcTest1Application 클래스 내 main 함수 실행
+    3) 브라우저에서 http://localhost:8080 접속
+
+4. DTO 설계
+    MYSQL DB 생성 -> DTO 설계 -> 필드
+    DTO @어노테이션
+        @AllArgsConstructor
+        @NoArgsConstructor
+        @Getter
+        @Setter
+        @ToString
+
+5. DB 연결
+===============================================================================================
+구글 크롬 브라우저 확장프로그램
+    Talend API - HTTP 통신 TEST
