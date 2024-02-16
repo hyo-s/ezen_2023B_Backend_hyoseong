@@ -1280,6 +1280,7 @@ JAVA 프로그램 EXE 실행 파일 만들기
     Set 인터페이스
         1. 구현클래스
             HashSet
+            TreeSet
         2. 사용방법 / 메소드
             .add(객체명)      : 주어진 객체를 set 컬렉션에 저장
             .size( )         : Set 컬렉션의 총 객체 수 반환
@@ -1313,6 +1314,7 @@ JAVA 프로그램 EXE 실행 파일 만들기
     1. 구현 클래스
         HashMap     : 동기화 X
         HashTable   : 동기화 O , 멀티스레드 권장
+        TreeMap
     2. 선언
         Map< K, V > map = new HashMap<>();
     3. 사용방법/ 메소드
