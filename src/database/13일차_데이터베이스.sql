@@ -23,9 +23,9 @@ create table buy(
     bpname char(6) not null ,         				# 제품명      최대 6자리 
     bgname char(4) ,                				# 분류명      최대 4자리
     bprice int not null ,            				# 가격       	정수 
-    bamout smallint not null ,         				# 구매수량   	정수 
-    primary key(bnum) ,               				# 제약조건 
-    foreign key ( mid ) references member(mid) 		# 제약조건 
+    bamount smallint not null ,         				# 구매수량   	정수
+    primary key(bnum) ,               				# 제약조건
+    foreign key ( mid ) references member(mid) 		# 제약조건
 );
 
 # ------------------------------샘플데이터------------------------------ #
@@ -136,7 +136,7 @@ select mnumber + 10, mnumber - 10 from member;
 					select * from member where mphone1 is null;
                 필드명 is not null
 					select * from member where mphone1 is not null;
-                
+
     1. as 별칭 			: 필드나 테이블의 별칭
     2. where 조건절
     3. order by 필드명	: 정렬
@@ -145,29 +145,55 @@ select mnumber + 10, mnumber - 10 from member;
         order by 필드명 desc					: 주어진 필드 기준으로 내림차순
         order by 필드명 정렬기준, 필드명 정렬기준	: 2개 이상의 정렬
 			앞 정렬된 데이터에서 동일한 데이터끼리의 후 정렬
-            
-	select : 검색 / 조회 / 색인
-		select 필드명, 필드명 from 테이블명
-        select * from 테이블명
-			1. where		: 조건절
-            2. order by		: 정렬
-            3. limit		: 레코드 검색 제한
-            - 작성순서
-				select * from 테이블명 where 조건절 order by 필드명 asc / desc limit 시작번호(0), 개수
-			1. as			: 별칭
-            2. distinct		: 필드 값 중복 제거
-==================================================================================
+	4. limit		: 레코드 검색 제한
+		select * from 테이블명 where 조건절 order by 필드명 asc / desc limit 시작번호(0), 개수
+	5. distinct		: 필드 값 중복 제거
+		select distinct froom 테이블명 where 조건절 order by 정렬필드 asc/desc limit 개수
+
+	6. 집계함수
+		1. sum( 필드명 ) 		: 필드 합계
+        2. avg( 필드명 ) 		: 필드 평균
+        3. max( 필드명 ) 		: 필드 최댓값
+        4. min( 필드명 ) 		: 필드 최소값
+        5. count( 필드명 ) 	: 필드 레코드 수 ( null 제외 )
+		6. count ( * ) 		: 레코드 수 ( null 포함 )
+
+    7. 특정범위 집계
+		select 필드명 from 테이블명 group by 필드명;
+        select mid as 구매자, sum(bamount) as 총수량 from buy group by mid;
+        select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy group by mid;
+        select mid as 구매자, avg(bamount) as 평균구매수량 from buy group by mid;
+
+    * 순서 *
+    select
+		필드명, *, 필드명 as 별칭, distinct 필드명,
+	from
+		테이블명, inner join
+	on
+		조인조건
+	where
+		일반조건
+	group by
+		그룹 필드
+	having
+		그룹 조건
+	order by
+		정렬 필드 asd / desc
+	limit
+		레코드 수 제한
+
+=================================================================================
 */
 
-select 
-	5+3 as 더하기, 5-3 as 빼기, 
-    5*3 as 곱하기, 5/3 as 나누기, 
-    5 div 3 as 몫, 5 mod 3 as 나머지, 
-    5 = 5 as 같다, 5 != 3 as 같지않다, 
-    5 > 3 as 크다, 5 < 3 as 작다, 
+select
+	5+3 as 더하기, 5-3 as 빼기,
+    5*3 as 곱하기, 5/3 as 나누기,
+    5 div 3 as 몫, 5 mod 3 as 나머지,
+    5 = 5 as 같다, 5 != 3 as 같지않다,
+    5 > 3 as 크다, 5 < 3 as 작다,
     5 >= 3 as 크거나같다, 5 <= 3 as 작거나같다
     from dual; # dual 임시 테이블
-    
+
 select * from member order by mdebut;
 select * from member order by mdebut asc;
 select * from member order by mdebut desc;
@@ -198,3 +224,77 @@ select distinct maddr, mphone1 from member;
 
 # RDBMS : 관계형 데이터베이스
 	# 열과 행으로 구성된 테이블 : 검색 결과도 테이블 레코드 단위
+
+# 6.
+select bamount from buy;				# 검색
+select distinct bamount from buy; 		# 중복제거 검색
+select bamount + 10 from buy;			# 연산
+
+# sum( 필드명 ) 	: 필드의 총 합계
+select sum(bamount) from buy;
+# avg( 필드명 ) 	: 필드의 평균
+select avg(bamount) from buy;
+# max( 필드명 ) 	: 필드의 최댓값
+select max(bamount) from buy;
+# min( 필드명 ) 	: 필드의 최소값
+select min(bamount) from buy;
+# count( 필드명 ) : 필드의 레코드 수  ( null 제외 )
+select count(bgname) from buy;
+# count( * )	: 레코드 수 ( null 포함 )
+select count( * ) from buy;
+
+# 1. 총 판매수량 합계
+select sum( bamount ) from buy;
+select mid from buy;
+
+# 2. 회원아이디 별로 판매수량 합계 / 회원 마다 판매수량 합계 !!!! RDBMS : 행과 열로 이루어진 관계형 데이터베이스
+# select sum( bamount ), mid from buy;
+
+# group by
+select mid from buy group by mid;		# mid 필드 그룹
+select distinct mid from buy;			# mid 필드 중복 제거
+
+# 2. 회원 아이디 별로 총 수량
+select mid, sum(bamount) from buy group by mid;
+select mid as 구매자, sum(bamount) as 총수량 from buy group by mid;
+
+# 3. 회원 아이디 별로 총 매출액 [ 판매가격 * 판매수량 ]
+# 3-1 전체 총 매출액
+select sum(bamount * bprice) from buy;
+select mid, sum(bamount * bprice) from buy group by mid;
+select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy group by mid;
+
+# 4. 회원 아이디 별로 판매수량 평균
+# 4-1 전체 평균
+select avg(bamount) from buy;
+select mid as 구매자, avg(bamount) as 평균구매수량 from buy group by mid;
+
+# 5-1 구매자 명단
+select mid as 구매자 from buy;
+# 5-2 구매자 그룹
+select mid as 구매자 from buy group by mid;
+# 5-3 구매자 별 총 수량
+select mid, sum(bamount) as 구매자 from buy group by mid;
+
+# 6. 회원아이디 별로 총 매출액이 1,000 이상인 경우 검색
+select * from buy;
+select (bamount * bprice) from buy;						# 각 판매별 매출액
+select sum(bamount * bprice) from buy;					# 각 판매별 총 매출액alter
+select * from buy where (bamount * bprice) >= 1000; 	# 각 판매별 매출액이 1000 이상
+select * from buy where bamount * bprice;
+# where 뒤에는 논리 결과물 T / F
+#select * from buy where sum (bamount * bprice);			# 오류
+
+# having 그룹에 해당하는 조건 vs where 그룹에 해당하지 않는 조건
+select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy group by mid;
+select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy group by mid having sum(bamount * bprice) >= 1000;
+
+# select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy where sum(bamount * bprice) >= 1000 group by mid;
+
+# 구매수량이 3개 이상인 회원아이디 별로 총매출액이 1000 이상인 경우 검색
+select * from buy;
+select * from buy where bamount >= 3;	# 수량이 3 이상인 경우
+select sum(bamount * bprice) from buy where bamount >= 3; # 수량이 3 이상인 경우의 개수*가격 총 합계
+select sum(bamount * bprice), mid from buy where bamount >= 3 group by mid; # 수량이 3 이상인 그룹의 개수*가격 총 합계
+select sum(bamount * bprice), mid from buy where bamount >= 3 group by mid having sum(bamount * bprice) >= 1000;
+# 수량이 3이상인 그룹의 개수*가격 총 합계가 1000 이상인 경우
