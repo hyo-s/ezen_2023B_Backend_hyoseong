@@ -123,6 +123,113 @@
             select * from 테이블명A left outer join 테이블명B on 테이블명A_PK필드명 = 테이블명B_FK필드명;
                 테이블명A와 테이블명B에서 테이블명A_PK필드명과 테이블명B_FK필드명이 같을 때 테이블명A 기준으로 테이블명B 조합 후 검색
 
+    	연산자
+    		1. 산술연산자
+    			+ 더하기	- 빼기
+    				select mnumber + 10, mnumber - 10 from member;
+    				테이블 member에서 mnumber에 더하기 10, 빼기 10을 한 후 검색
+                * 곱하기	/ 나누기
+    				select mnumber * 10, mnumber /3 from member;
+    				테이블 member에서 mnumber에 곱하기 10, 나누기 10을 한 후 검색
+                div 몫	mod 나머지
+    				select mnumber div 3, mnumber mod 3 from member;
+    				테이블 member에서 mnumber에 나누기 10을 한 후 몫과 나머지 검색
+            2. 비교연산자
+    			= 같다	!= 같지 않다
+    				select * from member where mnumber = 4;
+    				테이블 member에서 mnumber가 4이면 검색
+                    select * from member where mnumber != 4;
+                    테이블 member에서 mnumber가 4가 아니면 검색
+    			> 초과	>= 이상
+    				select * from member where mnumber > 4;
+    				테이블 member에서 mnumber가 4보다 크면 검색
+                    select * from member where mnumber >= 5;
+                    테이블 member에서 mnumber가 5보다 크거나 같으면 검색
+    			< 미만	<= 이하
+    				select * from member where mnumber < 5;
+    				테이블 member에서 mnumber가 5보다 작으면 검색
+    				select * from member where mnumber <= 5;
+    				테이블 member에서 mnumber가 5보다 작거나 같으면 검색
+            3. 논리연산자
+    			and 이면서	or 이거나		not 부정
+    				select * from member where mheight >=165 and mheight <=170;
+    				테이블 member에서 mheight가 165 이상이고 170이하이면 검색
+                    select * from member where mheight >= 165 or mnumber > 6;
+                    테이블 member에서 mheight가 165 이상이거나 mnumber가 6보다 크면 검색
+            4. 기타연산자
+    			필드명 between 시작값 and 끝값	: 시작값부터 끝값 까지 사이
+    				select * from member where mheight between 165 and 170;
+    				테이블 member에서 mheight의 값을 165부터 170까지만 검색
+    			필드명 in( '값', '값', '값' ) 	: 여러 값 중 하나라도 포함하면 true
+    				select * from member where maddr in('경기', '전남', '경남');
+    				테이블 member에서 maddr 안에 '경기', '전남', '경남'이 하나라도 있으면 검색
+                필드명 like 패턴
+    				1. % : 모든 문자 수 대응 앞뒤 구분
+    					select * from member where mname like '에이%';
+    					테이블 member에서 mname의 앞글자가 '에이'이면 검색
+    				2. _ : _개수 만큼의 문자 대응 앞뒤 구분
+    					select * from member where mname like '__핑크';
+    					테이블 member에서 mname의 값이 '핑크'가 뒤에 포함된 4글자이면 검색
+    			null
+    				필드명 is null
+    					select * from member where mphone1 is null;
+    					테이블 member에서 mphone1이 null이면 검색
+                    필드명 is not null
+    					select * from member where mphone1 is not null;
+    					테이블 member에서 mphone1이 null이 아니면 검색
+
+        1. as 별칭 			: 필드나 테이블의 별칭
+        2. where 조건절
+        3. order by 필드명	: 정렬
+    		오름차순 : 1, 2, 3, 4 과거 -> 최신, a, b, c, d, 가, 나, 다, 라
+    		order by 필드명 (asc)					: 주어진 필드 기준으로 오름차순 ( 기본값 )
+    		select * from member order by mdebut asc;
+    		테이블 member에서 mdebut 기준으로 오름차순 정렬
+            order by 필드명 desc					    : 주어진 필드 기준으로 내림차순
+            select * from member order by mdebut desc;
+            테이블 member에서 mdebut 기준으로 내림차순 정렬
+            order by 필드명 정렬기준, 필드명 정렬기준	: 2개 이상의 정렬
+            select * from member order by mheight desc, mdebut asc;
+    			앞 정렬된 데이터에서 동일한 데이터끼리의 후 정렬
+    	4. limit		: 레코드 검색 제한
+    		select * from 테이블명 where 조건절 order by 필드명 asc / desc limit 시작번호(0), 개수
+    		select * from member limit 2;
+            select * from member limit 0, 3;
+    	5. distinct		: 필드 값 중복 제거
+    		select distinct from 테이블명 where 조건절 order by 정렬필드 asc/desc limit 개수
+
+    	6. 집계함수
+    		1. sum( 필드명 ) 		: 필드 합계
+            2. avg( 필드명 ) 		: 필드 평균
+            3. max( 필드명 ) 		: 필드 최댓값
+            4. min( 필드명 ) 		: 필드 최소값
+            5. count( 필드명 ) 	: 필드 레코드 수 ( null 제외 )
+    		6. count ( * ) 		: 레코드 수 ( null 포함 )
+
+        7. 특정범위 집계
+    		select 필드명 from 테이블명 group by 필드명;
+            select mid as 구매자, sum(bamount) as 총수량 from buy group by mid;
+            select mid as 구매자, sum(bamount * bprice) as 총매출액 from buy group by mid;
+            select mid as 구매자, avg(bamount) as 평균구매수량 from buy group by mid;
+
+        * 순서 *
+        select
+    		필드명, *, 필드명 as 별칭, distinct 필드명,
+    	from
+    		테이블명, inner join
+    	on
+    		조인조건
+    	where
+    		일반조건
+    	group by
+    		그룹 필드
+    	having
+    		그룹 조건
+    	order by
+    		정렬 필드 asd / desc
+    	limit
+    		레코드 수 제한
+
 ===============================================================================================
 자바와 DB 서버 연결
     0.JDBC Driver : 각 DBMS 회사에서 다운로드 받으세요.
